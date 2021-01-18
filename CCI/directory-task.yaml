@@ -22,4 +22,4 @@ run:
     cp Dockerfile $DIR/
     cp version $DIR/
     ls -lrt $DIR/
-    echo "Version to Deploy: $(cat $DIR/version)"
+    echo "Version to  Deploy: $(cat $DIR/version)"
