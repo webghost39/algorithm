@@ -17,6 +17,7 @@ run:
     DIR="$PWD/directory-jars"
     cd algorithm/CCI
     echo "Version: $(cat version)"
+	chomd +x mvnw
     ./mvnw clean package
     cp target/*.jar $DIR/
     cp Dockerfile $DIR/
