@@ -1,0 +1,25 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source: {repository: openjdk, tag: 8-jdk-alpine}
+
+inputs:
+  - name: algorithm
+outputs:
+  - name: directory-jars
+
+run:
+  path: sh
+  args:
+  - -c
+  - |
+    DIR="$PWD/directory-jars"
+    cd CCI
+    echo "Version: $(cat version)"
+    ./mvn clean package
+    cp target/*.jar $DIR/
+    cp Dockerfile $DIR/
+    cp version $DIR/
+    ls -lrt $DIR/
+    echo "Version to Deploy: $(cat $DIR/version)"
