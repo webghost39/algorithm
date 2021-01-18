@@ -16,9 +16,10 @@ run:
   - |
     DIR="$PWD/directory-jars"
     cd CCI
-    echo "Start Deploy"
+    echo "Version: $(cat version)"
     ./mvn clean package
     cp target/*.jar $DIR/
     cp Dockerfile $DIR/
+    cp version $DIR/
     ls -lrt $DIR/
-    echo "End Deploy"
+    echo "Version to Deploy: $(cat $DIR/version)"
